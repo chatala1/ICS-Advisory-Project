@@ -193,6 +193,19 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Dashboard links */
+.dashboard-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.dashboard-links .btn {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     header h1 {

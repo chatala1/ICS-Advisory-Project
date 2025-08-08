@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS Advisory Dashboard - ICS Advisory Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- CDN scripts with fallback for local development -->
+    <script>
+        // Load Chart.js
+        if (typeof Chart === 'undefined') {
+            const script1 = document.createElement('script');
+            script1.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script1.onerror = function() {
+                console.warn('Chart.js CDN failed, using simple chart fallback');
+                window.Chart = null;
+            };
+            document.head.appendChild(script1);
+        }
+        
+        // Load PapaParse or use simple CSV parser
+        if (typeof Papa === 'undefined') {
+            const script2 = document.createElement('script');
+            script2.src = 'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js';
+            script2.onerror = function() {
+                console.warn('PapaParse CDN failed, using simple CSV parser');
+                window.Papa = {
+                    parse: function(csv, options) {
+                        const lines = csv.split('\n');
+                        const headers = lines[0].split(',').map(h => h.trim());
+                        const data = [];
+                        
+                        for (let i = 1; i < lines.length; i++) {
+                            if (lines[i].trim()) {
+                                const values = lines[i].split(',');
+                                const row = {};
+                                headers.forEach((header, index) => {
+                                    row[header] = values[index] ? values[index].trim() : '';
+                                });
+                                data.push(row);
+                            }
+                        }
+                        
+                        return { data: data, errors: [] };
+                    }
+                };
+            };
+            document.head.appendChild(script2);
+        }
+    </script>
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="logo">ICS|AP</h1>
+                    <h2 class="dashboard-title">CISA ICS ADVISORIES: MAIN VIEW</h2>
+                </div>
+                <div class="country-selector">
+                    <label for="countrySelect">Select Country</label>
+                    <select id="countrySelect" class="form-control">
+                        <option value="">All Countries</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Statistics Cards -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">CISA ICS ADVISORIES</div>
+                        <div class="stat-value" id="totalAdvisories">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">VENDORS</div>
+                        <div class="stat-value" id="totalVendors">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">PRODUCTS</div>
+                        <div class="stat-value" id="totalProducts">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search and Filters -->
+            <section class="search-section">
+                <div class="search-grid">
+                    <div class="search-item">
+                        <label for="vendorSearch">Search by Vendor</label>
+                        <select id="vendorSearch" class="form-control">
+                            <option value="">All Vendors</option>
+                        </select>
+                    </div>
+                    <div class="search-item">
+                        <label for="alertCodeSearch">Search by ICS Advisory Alert Code</label>
+                        <input type="text" id="alertCodeSearch" class="form-control" placeholder="Enter alert code...">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Grid -->
+            <section class="content-grid">
+                <!-- Vendor Headquarters Chart -->
+                <div class="content-item chart-container">
+                    <h3>Vendor Headquarters Location</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="vendorChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- World Map Placeholder -->
+                <div class="content-item map-container">
+                    <h3>World Map - Vendor Distribution</h3>
+                    <div class="map-placeholder" id="worldMap">
+                        <div class="map-info">
+                            <p>Interactive world map showing vendor headquarters distribution</p>
+                            <div class="map-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color high"></span>
+                                    <span>High concentration (50+ vendors)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color medium"></span>
+                                    <span>Medium concentration (10-49 vendors)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color low"></span>
+                                    <span>Low concentration (1-9 vendors)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Table -->
+            <section class="table-section">
+                <div class="table-header">
+                    <h3>ICS Advisory Data</h3>
+                    <div class="table-controls">
+                        <span class="results-info" id="resultsInfo">Showing 0 results</span>
+                        <div class="pagination-controls">
+                            <button id="prevPage" class="btn btn-small" disabled>← Previous</button>
+                            <span id="pageInfo">Page 1 of 1</span>
+                            <button id="nextPage" class="btn btn-small" disabled>Next →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table id="advisoryTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Alert Code</th>
+                                <th>Release Date</th>
+                                <th>CISA ICS Advisory</th>
+                                <th>Vendor</th>
+                                <th>Product</th>
+                                <th>Vendor HQ</th>
+                                <th>CVE</th>
+                                <th>CVSS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td colspan="8" class="loading-cell">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Newsletter Banner -->
+            <section class="newsletter-banner">
+                <div class="banner-content">
+                    <span class="banner-text">Interested in receiving ICS Advisory Project Weekly Summary Slides and Other CERT & Vendor Advisory Summaries in your email every Monday?</span>
+                    <button class="btn btn-signup">Sign-up Today!</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link active">ICS Advisory Dashboards</a>
+                <a href="#" class="nav-link">ICS Advisory Summaries</a>
+                <a href="https://github.com/chatala1/ICS-Advisory-Project" class="nav-link">ICS[AP] GitHub</a>
+                <a href="#" class="nav-link">ICS[AP] API</a>
+                <a href="#" class="nav-link">OT Cybersecurity</a>
+            </div>
+        </div>
+    </nav>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

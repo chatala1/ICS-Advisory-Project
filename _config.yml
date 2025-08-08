@@ -1,0 +1,42 @@
+title: ICS Advisory Project
+description: Clean and usable DHS CISA ICS Advisories data in CSV format
+baseurl: ""
+url: "https://chatala1.github.io/ICS-Advisory-Project"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE.md
+  - SECURITY.md
+  - Issues.md
+  - vendor/
+  - .bundle/
+  - .git/
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+# Include CSV files for download
+include:
+  - ICS-CERT_ADV/
+
+# Site settings
+author:
+  name: ICS Advisory Project
+  email: icsadvisoryproj@icsadvisoryproject.com
+
+# GitHub Pages safe settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO settings
+twitter:
+  card: summary
+  
+lang: en_US

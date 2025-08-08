@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS Advisory Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ICS Advisory Project</h1>
+            <p class="subtitle">Clean and usable DHS CISA ICS Advisories data in CSV format</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>About the Project</h2>
+            <p>The ICS Advisory Project is an open-source project to provide clean and usable DHS CISA ICS Advisories data in Comma Separated Value (CSV) format. This format better supports vulnerability analysis for the OT/ICS community, which is difficult to perform in the current CISA ICS Advisory HTML format.</p>
+            
+            <p>While some of this dataset may seem duplicative of CVE data, CISA ICS Advisories have been providing additional insight not provided in a CVE, such as Vendor headquarters locations, Product distributions, and Critical Infrastructure sectors for each vendor product.</p>
+        </section>
+
+        <section class="dashboard">
+            <h2>ICS Advisory Dashboard</h2>
+            <p>View the ICS Advisory Project Dashboard for interactive data exploration:</p>
+            <a href="https://www.icsadvisoryproject.com/home" class="btn btn-primary">Visit Dashboard</a>
+        </section>
+
+        <section class="data-downloads">
+            <h2>Download Data</h2>
+            <p>Access the latest CISA ICS Advisory data in CSV format:</p>
+            
+            <div class="download-grid">
+                <div class="download-item">
+                    <h3>Master Dataset</h3>
+                    <p>Complete dataset with all advisories</p>
+                    <a href="ICS-CERT_ADV/CISA_ICS_ADV_Master.csv" class="btn btn-download">Download Master CSV</a>
+                </div>
+                
+                <div class="download-item">
+                    <h3>2025 Data</h3>
+                    <p>Latest 2025 advisory data</p>
+                    <a href="ICS-CERT_ADV/CISA_ICS_ADV_2025_08_05.csv" class="btn btn-download">Download 2025 CSV</a>
+                </div>
+                
+                <div class="download-item">
+                    <h3>2024 Data</h3>
+                    <p>2024 advisory data</p>
+                    <a href="ICS-CERT_ADV/CISA_ICS_ADV_2024_7_29_25.csv" class="btn btn-download">Download 2024 CSV</a>
+                </div>
+                
+                <div class="download-item">
+                    <h3>2023 Data</h3>
+                    <p>2023 advisory data</p>
+                    <a href="ICS-CERT_ADV/CISA_ICS_ADV_2023_6_5_25.csv" class="btn btn-download">Download 2023 CSV</a>
+                </div>
+            </div>
+            
+            <p><a href="ICS-CERT_ADV/">Browse all CSV files →</a></p>
+        </section>
+
+        <section class="community">
+            <h2>Community & Support</h2>
+            <div class="community-links">
+                <div class="community-item">
+                    <h3>Discord Communities</h3>
+                    <ul>
+                        <li><a href="https://discord.gg/qJ8QMmxw9M">ICS Advisory Project Discord</a></li>
+                        <li><a href="https://discord.gg/ZqVChAUTE3">OT | ICS | SCADA Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="community-item">
+                    <h3>Tools & Add-ons</h3>
+                    <ul>
+                        <li><a href="https://github.com/efi-k/ICS_CERT_TA">Splunk Add-On for CISA ICS Advisories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="community-item">
+                    <h3>Contact</h3>
+                    <p><a href="mailto:icsadvisoryproj@icsadvisoryproject.com">icsadvisoryproj@icsadvisoryproject.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="github">
+            <h2>Source Code</h2>
+            <p>This project is open source and available on GitHub:</p>
+            <a href="https://github.com/chatala1/ICS-Advisory-Project" class="btn btn-secondary">View on GitHub</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>Disclaimer</h3>
+            <p>This repository focuses solely on providing CISA ICS Advisories data formatted in a way that can quickly help organizations look for vulnerabilities identified specific to Vendors/Products used in OT/ICS environments.</p>
+            <p>For CISA's official ICS-CERT Advisories on vulnerabilities, please visit <a href="https://www.cisa.gov/uscert/ics/advisories">CISA ICS-CERT Advisories</a>.</p>
+            
+            <h3>License</h3>
+            <p>This database is made available under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License (ODbL) v1.0</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>

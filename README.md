@@ -1,6 +1,6 @@
 # ICS Advisory Project ##
 
-https://chatala1.github.io/ICS-Advisory-Dashboard
+https://chatala1.github.io/ICS-Advisory-Project
 
 The ICS Advisory Project is an open-source project to provide clean and usable DHS CISA ICS Advisories data in Comma Separated Value (CSV) format. This format better supports vulnerability analysis for the OT/ICS community, which is difficult to perform in the current CISA ICS Advisory HTML format. The CISA ICS Advisories data also supports the other project goal: CISA ICS Advisory Dashboard. The dashboard provides smaller OT/ICS asset owners with a tool to quickly filter the view of vulnerabilities affecting vendors/products within their environment. This project is by no means a replacement for the original CISA ICS Advisories, and I highly recommend that anyone using this dataset refer to and read them.
 

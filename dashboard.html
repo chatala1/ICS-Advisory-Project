@@ -6,6 +6,8 @@
     <title>ICS Advisory Dashboard - ICS Advisory Project</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
+    <!-- Local Icon Library -->
+    <link rel="stylesheet" href="icons.css">
     <!-- CDN scripts with fallback for local development -->
     <script>
         // Load Chart.js
@@ -74,16 +76,31 @@
             <section class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-label">CISA ICS ADVISORIES</div>
-                        <div class="stat-value" id="totalAdvisories">0</div>
+                        <div class="stat-icon">
+                            <span class="icon icon-shield"></span>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">CISA ICS ADVISORIES</div>
+                            <div class="stat-value" id="totalAdvisories">0</div>
+                        </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">VENDORS</div>
-                        <div class="stat-value" id="totalVendors">0</div>
+                        <div class="stat-icon">
+                            <span class="icon icon-building"></span>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">VENDORS</div>
+                            <div class="stat-value" id="totalVendors">0</div>
+                        </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">PRODUCTS</div>
-                        <div class="stat-value" id="totalProducts">0</div>
+                        <div class="stat-icon">
+                            <span class="icon icon-cogs"></span>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">PRODUCTS</div>
+                            <div class="stat-value" id="totalProducts">0</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -92,13 +109,17 @@
             <section class="search-section">
                 <div class="search-grid">
                     <div class="search-item">
-                        <label for="vendorSearch">Search by Vendor</label>
+                        <label for="vendorSearch">
+                            <span class="icon icon-search"></span> Search by Vendor
+                        </label>
                         <select id="vendorSearch" class="form-control">
                             <option value="">All Vendors</option>
                         </select>
                     </div>
                     <div class="search-item">
-                        <label for="alertCodeSearch">Search by ICS Advisory Alert Code</label>
+                        <label for="alertCodeSearch">
+                            <span class="icon icon-code"></span> Search by ICS Advisory Alert Code
+                        </label>
                         <input type="text" id="alertCodeSearch" class="form-control" placeholder="Enter alert code...">
                     </div>
                 </div>
@@ -108,7 +129,7 @@
             <section class="content-grid">
                 <!-- Vendor Headquarters Chart -->
                 <div class="content-item chart-container">
-                    <h3>Vendor Headquarters Location</h3>
+                    <h3><span class="icon icon-chart"></span> Vendor Headquarters Location</h3>
                     <div class="chart-wrapper">
                         <canvas id="vendorChart"></canvas>
                     </div>
@@ -116,7 +137,7 @@
 
                 <!-- World Map Placeholder -->
                 <div class="content-item map-container">
-                    <h3>World Map - Vendor Distribution</h3>
+                    <h3><span class="icon icon-globe"></span> World Map - Vendor Distribution</h3>
                     <div class="map-placeholder" id="worldMap">
                         <div class="map-info">
                             <p>Interactive world map showing vendor headquarters distribution</p>
@@ -142,13 +163,13 @@
             <!-- Data Table -->
             <section class="table-section">
                 <div class="table-header">
-                    <h3>ICS Advisory Data</h3>
+                    <h3><span class="icon icon-table"></span> ICS Advisory Data</h3>
                     <div class="table-controls">
-                        <span class="results-info" id="resultsInfo">Showing 0 results</span>
+                        <span class="results-info" id="resultsInfo"><span class="icon icon-info"></span> Showing 0 results</span>
                         <div class="pagination-controls">
-                            <button id="prevPage" class="btn btn-small" disabled>← Previous</button>
+                            <button id="prevPage" class="btn btn-small" disabled><span class="icon icon-chevron-left"></span> Previous</button>
                             <span id="pageInfo">Page 1 of 1</span>
-                            <button id="nextPage" class="btn btn-small" disabled>Next →</button>
+                            <button id="nextPage" class="btn btn-small" disabled>Next <span class="icon icon-chevron-right"></span></button>
                         </div>
                     </div>
                 </div>

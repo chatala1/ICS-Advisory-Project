@@ -1,0 +1,183 @@
+/* Local Icon Library - ICS Advisory Project Icon System */
+/* CSS-based icons that work without external dependencies */
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+/* Shield icon (for security/advisories) */
+.icon-shield::before {
+    content: "🛡️";
+    font-size: inherit;
+}
+
+/* Building/Company icon (for vendors) */
+.icon-building::before {
+    content: "🏢";
+    font-size: inherit;
+}
+
+/* Gear/Settings icon (for products) */
+.icon-cogs::before {
+    content: "⚙️";
+    font-size: inherit;
+}
+
+/* Search icon */
+.icon-search::before {
+    content: "🔍";
+    font-size: inherit;
+}
+
+/* Code icon */
+.icon-code::before {
+    content: "💻";
+    font-size: inherit;
+}
+
+/* Chart/Analytics icon */
+.icon-chart::before {
+    content: "📊";
+    font-size: inherit;
+}
+
+/* Globe/World icon */
+.icon-globe::before {
+    content: "🌍";
+    font-size: inherit;
+}
+
+/* Table/Data icon */
+.icon-table::before {
+    content: "📋";
+    font-size: inherit;
+}
+
+/* Info icon */
+.icon-info::before {
+    content: "ℹ️";
+    font-size: inherit;
+}
+
+/* Download icon */
+.icon-download::before {
+    content: "⬇️";
+    font-size: inherit;
+}
+
+/* Database icon */
+.icon-database::before {
+    content: "🗄️";
+    font-size: inherit;
+}
+
+/* Calendar icon */
+.icon-calendar::before {
+    content: "📅";
+    font-size: inherit;
+}
+
+/* File icon */
+.icon-file::before {
+    content: "📄";
+    font-size: inherit;
+}
+
+/* Dashboard/Speedometer icon */
+.icon-dashboard::before {
+    content: "📈";
+    font-size: inherit;
+}
+
+/* External link icon */
+.icon-external::before {
+    content: "🔗";
+    font-size: inherit;
+}
+
+/* Discord icon */
+.icon-discord::before {
+    content: "💬";
+    font-size: inherit;
+}
+
+/* Email icon */
+.icon-email::before {
+    content: "✉️";
+    font-size: inherit;
+}
+
+/* Tools icon */
+.icon-tools::before {
+    content: "🔧";
+    font-size: inherit;
+}
+
+/* Puzzle piece/plugin icon */
+.icon-puzzle::before {
+    content: "🧩";
+    font-size: inherit;
+}
+
+/* GitHub icon */
+.icon-github::before {
+    content: "📁";
+    font-size: inherit;
+}
+
+/* Users/Community icon */
+.icon-users::before {
+    content: "👥";
+    font-size: inherit;
+}
+
+/* Link icon */
+.icon-link::before {
+    content: "🔗";
+    font-size: inherit;
+}
+
+/* Navigation arrows */
+.icon-chevron-left::before {
+    content: "◀";
+    font-size: 0.8em;
+}
+
+.icon-chevron-right::before {
+    content: "▶";
+    font-size: 0.8em;
+}
+
+/* Responsive icon sizes */
+@media (max-width: 768px) {
+    .icon {
+        margin-right: 0.3em;
+    }
+}
+
+/* Icon color theming */
+.stat-icon .icon {
+    font-size: 2rem;
+    margin-right: 0;
+}
+
+.icon-primary {
+    color: #3498db;
+}
+
+.icon-success {
+    color: #27ae60;
+}
+
+.icon-warning {
+    color: #f39c12;
+}
+
+.icon-danger {
+    color: #e74c3c;
+}
